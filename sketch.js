@@ -25,7 +25,7 @@ function setup() {
 
 function draw() {
   background(255);
-  translate(width - 200, height - 200);
+  translate(width / 2, height / 2);
   dibujarRuleta();
   //dibujarFlecha(); 
   if (sortear) { 
