@@ -8,18 +8,19 @@ let colores = [];
 
 
 function setup() {
-  createCanvas(600, 600); 
+  let cnv = createCanvas(600, 600);
+  cnv.position((windowWidth - width) / 2, (windowHeight - height) / 2);
   angleMode(DEGREES);
   textAlign(CENTER, CENTER); 
   textSize(250); 
   textFont("Arial");
   generarColores();
-  let botonParticipantes = createButton("Cambiar número de participantes");
-  botonParticipantes.position(100, 650); 
+  let botonParticipantes = createButton("Participantes");
+  botonParticipantes.position(width/2 - botonParticipantes.width - 10, height + 20); 
   botonParticipantes.mousePressed(cambiarParticipantes); 
 
-  let botonSortear = createButton("Sortear la ruleta");
-  botonSortear.position(400, 650); 
+  let botonSortear = createButton("Sortear");
+  botonSortear.position(width/2 + 10, height + 20); 
   botonSortear.mousePressed(iniciarSorteo);
 }
 
