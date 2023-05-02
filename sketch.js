@@ -25,7 +25,7 @@ function setup() {
 
 function draw() {
   background(255);
-  translate(width / 2, height / 2);
+  translate(width - 200, height - 200);
   dibujarRuleta();
   //dibujarFlecha(); 
   if (sortear) { 
@@ -107,6 +107,3 @@ function mostrarGanador() {
    fill(0);  
    text(ganador,0 ,0 ); 
 }
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-  }
