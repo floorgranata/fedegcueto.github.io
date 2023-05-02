@@ -115,3 +115,6 @@ function mostrarGanador() {
    fill(0);  
    text(ganador,0 ,0 ); 
 }
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+  }
