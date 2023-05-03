@@ -8,7 +8,7 @@
   let logo;
 
   function preload() {
-    logo = loadImage("logo.png");
+    logo = loadImage("textura_0000.png");
   }
 
   function setup() {
@@ -127,7 +127,7 @@
 
   function dibujarLogo() {
     if (!logo) { // si la imagen no se ha cargado todavía, cargarla
-      logo = loadImage("logo.jpg");
+      logo = loadImage("textura_0000.jpg");
     }
     // dibujar el logo debajo del número grande del centro
     push();
