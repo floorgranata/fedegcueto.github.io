@@ -1,11 +1,15 @@
-let numParticipantes = 99; 
+let numParticipantes = 100; 
 let angulo = 0; 
 let velocidad = 0; 
 let aceleracion = 0; 
 let ganador = 0; 
 let sortear = false; 
 let colores = []; 
+let logo;
 
+function preload() {
+  logo = loadImage("logo.png");
+}
 
 function setup() {
   let cnv = createCanvas(600, 600);
@@ -33,16 +37,17 @@ function draw() {
     girarRuleta();
     mostrarGanador();
   }
+  dibujarLogo(); 
 }
 
 
 function generarColores() {
-  colores = [];
-  for (let i = 0; i < numParticipantes; i++) {
-    let c = color(floor(random(255)), floor(random(255)), floor(random(255))); 
-    colores.push(c); 
-  }
-}
+  colores = ['#30E17B', 'black']; // especifica los colores que quieras aquí
+  // También puedes definir los colores como objetos color de p5.js
+  colores = [color('#30E17B'), color('black')];
+  while (colores.length < numParticipantes) {
+    colores.push(random(colores)); // duplica los colores existentes para llenar el array
+  } }
 
 
 function cambiarParticipantes() {
@@ -68,23 +73,26 @@ function iniciarSorteo() {
    sortear = true; 
 }
 
-
 function dibujarRuleta() {
-   let anguloInicial = angulo; 
-   let anguloFinal = angulo + (360 / numParticipantes); 
-   for (let i = numParticipantes -1 ; i >=0 ; i--) { 
-      fill(colores[i]); 
-      arc(0,0,width,width,anguloInicial,anguloFinal); 
-      push();
-      rotate((anguloInicial + anguloFinal) /2 );
-      fill(0);  
-      textSize(20);
-      text(i+1, width/2 - 20 ,0); 
-      pop(); 
-      anguloInicial += (360 / numParticipantes); 
-      anguloFinal += (360 / numParticipantes);  
-   }
+  let anguloInicial = angulo;
+  let anguloFinal = angulo + (360 / numParticipantes);
+  let colIndex = 0; // variable para controlar el color actual
+  for (let i = numParticipantes - 1; i >= 0; i--) {
+    let c = colIndex % 2 === 0 ? color(0, 0, 0) : color(48, 225, 123); // intercalamos los colores
+    fill(c);
+    arc(0, 0, width, width, anguloInicial, anguloFinal);
+    push();
+    rotate((anguloInicial + anguloFinal) / 2);
+    fill(255);
+    textSize(20);
+    text(i + 1, width / 2 - 20, 0);
+    pop();
+    anguloInicial += (360 / numParticipantes);
+    anguloFinal += (360 / numParticipantes);
+    colIndex++; // avanzamos al siguiente color
+  }
 }
+
 
 function dibujarFlecha() {
    fill(0);   
@@ -105,6 +113,21 @@ function girarRuleta() {
 function mostrarGanador() {
    let indiceGanador = floor((angulo %360 ) / (360 / numParticipantes));
    ganador = numParticipantes - indiceGanador; 
-   fill(0);  
+   
+   stroke(255);
+   strokeWeight(5);
+   fill(0);
    text(ganador,0 ,0 ); 
+   noStroke();
+}
+
+function dibujarLogo() {
+  if (!logo) { // si la imagen no se ha cargado todavía, cargarla
+    logo = loadImage("textura_0000.jpg");
+  }
+  // dibujar el logo debajo del número grande del centro
+  push();
+  translate(0, 150);
+  image(logo, -logo.width/2, 0);
+  pop();
 }
