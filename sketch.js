@@ -19,13 +19,17 @@ function setup() {
   textSize(250); 
   textFont("Arial");
   generarColores();
-  let botonParticipantes = createButton("Participantes");
+  let botonParticipantes = createButton("P");
   botonParticipantes.position(width/2 - botonParticipantes.width - 10, height + 20); 
   botonParticipantes.mousePressed(cambiarParticipantes); 
 
   let botonSortear = createButton("Sortear");
   botonSortear.position(width/2 + 10, height + 20); 
   botonSortear.mousePressed(iniciarSorteo);
+  botonSortear.style('background-color', '#30E17B');
+  botonSortear.style('border', '2px');
+  botonSortear.style('color', 'white');
+  botonSortear.style('padding', '10px');
 }
 
 function draw() {
