@@ -20,11 +20,11 @@
     textFont("Arial");
     generarColores();
     let botonParticipantes = createButton("P");
-    botonParticipantes.position(width/2 - botonParticipantes.width - 10, height - 55); 
+    botonParticipantes.position(width/2 - botonParticipantes.width - 10, height - 75); 
     botonParticipantes.mousePressed(cambiarParticipantes); 
 
     let botonSortear = createButton("Sortear");
-    botonSortear.position(width/2 + 10, height -70); 
+    botonSortear.position(width/2 + 10, height -90); 
     botonSortear.mousePressed(iniciarSorteo);
     botonSortear.style('background-color', '#30E17B');
   botonSortear.style('border', 'none');
