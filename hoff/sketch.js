@@ -15,7 +15,7 @@ function preload() {
     imgs.push(img);
   }
   for (let i = 0; i < numFondos; i++) {
-    let fondo = loadImage("fondo_000" + i + ".jpg");
+    let fondo = loadImage("background_000" + i + ".jpg");
     fondos.push(fondo); // agrega la imagen al array de fondos
   }
 }
