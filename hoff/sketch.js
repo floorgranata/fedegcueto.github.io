@@ -108,9 +108,27 @@ function cambiarColorYTexturaPorSonido() {// cambia la textura de la forma elegi
   }
 }
 
+function mouseWheel(event) {
+  for (let i = 0; i < cuadrados.length; i++) {
+    if (mouseX > cuadrados[i].x && mouseX < cuadrados[i].x + cuadrados[i].w &&
+        mouseY > cuadrados[i].y && mouseY < cuadrados[i].y + cuadrados[i].h) {
+      cuadrados[i].w += event.delta * 0.1;
+      cuadrados[i].h += event.delta * 0.1;
+    }
+  }
+  for (let i = 0; i < rectangulos.length; i++) {
+    if (mouseX > rectangulos[i].x && mouseX < rectangulos[i].x + rectangulos[i].w &&
+        mouseY > rectangulos[i].y && mouseY < rectangulos[i].y + rectangulos[i].h) {
+      rectangulos[i].w += event.delta * 0.1;
+      rectangulos[i].h += event.delta * 0.1;
+    }
+  }
+}
+
+
 function cambiarTamanoPorMouse() {
   if (mouseIsPressed) {
-    // Recorrer las formas y verificar si el mouse está sobre alguna de ellas
+    // Recorre las formas y verificar si el mouse está sobre alguna de ellas
     for (let i = 0; i < cuadrados.length; i++) {
     if (mouseX > cuadrados[i].x && mouseX < cuadrados[i].x + cuadrados[i].w &&
     mouseY > cuadrados[i].y && mouseY < cuadrados[i].y + cuadrados[i].h) {
@@ -136,7 +154,7 @@ function cambiarTamanoPorMouse() {
     }
     
     function draw() {
-      noTint(); 
+       noTint(); 
     background(fondos[indice]);
     cambiarColorYTexturaPorSonido();
     cambiarTamanoPorMouse();
@@ -151,15 +169,15 @@ function keyPressed() {
   }
   if (key == "f") { 
     let fs = fullscreen(); // obtiene el estado actual de pantalla completa
-    fullscreen(!fs); // cambia al estado opuesto
+    fullscreen(!fs); // cambia al opuesto
   }
   if (keyCode == ENTER) { 
-    saveCanvas("captura.png"); // guarda el canvas como una imagen png
+    saveCanvas("captura.png"); 
   }
-  if (keyCode == CONTROL) { // si se presiona la tecla control
-    indice++; // aumenta el índice en uno
-    if (indice == numFondos) { // si el índice llega al final del array
-      indice = 0; // vuelve al principio
+  if (keyCode == CONTROL) {
+    indice++;
+    if (indice == numFondos) { 
+      indice = 0;
     }
    }
   }
